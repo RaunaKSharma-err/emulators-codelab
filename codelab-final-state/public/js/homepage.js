@@ -123,7 +123,7 @@ class HomePage {
     );
 
     // Listen for updates to the cart
-    // TODO: Unsub from this as well
+    // Unsub from this as well
     this.cartUnsub = cartRef.onSnapshot((cart) => {
       console.log("cart", cart.data());
 
@@ -152,6 +152,17 @@ class HomePage {
       this.headerBar.setIconEnabled("cart", true);
       this.listenForCart(this.auth.currentUser.uid);
     } else {
+      if (this.cartUnsub) {
+        this.cartUnsub();
+        this.cartUnsub = null;
+      }
+
+      // Unsubscribe from the items listener when signing out
+      if (this.cartItemsUnsub) {
+        this.cartItemsUnsub();
+        this.cartItemsUnsub = null;
+      }
+
       this.headerBar.setIconText("sign_in", "Sign In");
       this.headerBar.setIconText("cart", "N/A");
       this.headerBar.setIconEnabled("cart", false);
