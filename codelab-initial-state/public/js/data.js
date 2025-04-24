@@ -23,7 +23,7 @@ const NAMES = [
   "Shoes",
   "Mystery Box",
   "Gadget",
-  "Multi-tool"
+  "Multi-tool",
 ];
 
 const ADJECTIVES = [
@@ -39,7 +39,7 @@ const ADJECTIVES = [
   "Refined",
   "Rustic",
   "Ergonomic",
-  "Intelligent"
+  "Intelligent",
 ];
 
 const DESCRIPTIONS = [
@@ -50,7 +50,7 @@ const DESCRIPTIONS = [
   "From the makers of 'The Smurfs Movie' comes this exciting new purchasing opportunity",
   "The perfect gift for Dads, Grads, or people named Chad!",
   "As seen on Shark Tank, this will change the way you think!",
-  "Step down sliced bread, there is a new greatest thing! And it's available with just one click."
+  "Step down sliced bread, there is a new greatest thing! And it's available with just one click.",
 ];
 
 const PRICES = [
@@ -62,7 +62,7 @@ const PRICES = [
   "19.99",
   "26.99",
   "29.99",
-  "99.99"
+  "99.99",
 ];
 
 const IMG_SIZES = ["640", "600", "480", "800", "640", "700", "720"];
@@ -83,7 +83,7 @@ export async function createItems(db) {
       name: _getProductName(),
       price: _getProductPrice(),
       description: _getProductDescription(),
-      imageUrl: _getProductImageUrl()
+      imageUrl: _getProductImageUrl(),
     };
 
     const ref = db.collection("items").doc();
@@ -107,7 +107,7 @@ function _getProductPrice() {
 
 function _getProductImageUrl() {
   return (
-    "https://placeimg.com/" +
+    "https://picsum.photos/" +
     _randomElement(IMG_SIZES) +
     "/" +
     _randomElement(IMG_SIZES) +
